@@ -2,9 +2,11 @@
   "name": "nida-info-simulation",
   "version": "1.0.0",
   "description": "Simulation of Nida's API",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/index.js",
+    "dev": "nodemon --exec babel-node src/app.js",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,12 +28,16 @@
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "pg": "^8.10.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.31.1"
+    "sequelize": "^6.31.1",
+    "swagger": "^0.7.5",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.21.4",
