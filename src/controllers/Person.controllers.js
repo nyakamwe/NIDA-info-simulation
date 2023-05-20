@@ -3,20 +3,28 @@ import { generateIDNUMBER } from "../helpers"
 
 export default class PersonController {
     static async listPeople(req, res){
-        const include = [
-            {
-                model: db.Partner,
-                as:'spouse'
-            }
-        ]
-        const people = await db.People.findAll({
-            include
-        })
-
-        // res.render('peopleList', { title: 'List', people})
-        return res.status(200).json({
-            response: people
-        })
+        try {
+            const include = [
+                {
+                    model: db.Partner,
+                    as:'spouse'
+                }
+            ]
+            const people = await db.People.findAll({
+                include
+            })
+    
+            // res.render('peopleList', { title: 'List', people})
+            return res.status(200).json({
+                response: people
+            })
+            
+        } catch (error) {
+            return res.status(400).json({
+                error: error.message
+            })
+        }
+        
     }
 
     static async addNewPerson(req, res){
