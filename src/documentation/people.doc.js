@@ -75,8 +75,8 @@
  * /people/{personId}/add-spouse:
  *      post:
  *          tags: [People]
- *          summary: This helps to complete your registration. 
- *          description: complete registration.
+ *          summary: This helps to add spouse to a person. 
+ *          description: Add Spouse.
  *          parameters:
  *              - name: personId
  *                in: path
@@ -104,5 +104,21 @@
  *          responses:
  *                  201:
  *                     description: Spouse added successfully!
+ * 
+ * /people/{IDNUMBER}/find:
+ *      get:
+ *          tags: [People]
+ *          summary: This helps find specific user based on IDNUMBER. 
+ *          description: Find user by IDNUMBER.
+ *          parameters:
+ *              - name: IDNUMBER
+ *                in: path
+ *                required: true
+ *                description: Identity number to find specific user.
+ *          responses:
+ *                  200:
+ *                     description: Person founded successfully!
+ *                  404:
+ *                     description: Person Not found
  * 
  */

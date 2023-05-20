@@ -7,5 +7,6 @@ const router = Router()
 router.get('/', PersonController.listPeople)
 router.post('/add', PersonController.addNewPerson)
 router.post('/:personId/add-spouse', SpouseController.addSpouseToPerson)
+router.get('/:IDNUMBER/find', PersonController.findByIDNUMBER)
 
 export default router

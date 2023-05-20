@@ -36,10 +36,31 @@ export default class PersonController {
         })
     }
 
-
-
     static async getFormToAddPeople(req, res){
         res.render('addPeople', { title: 'Add' })
     }
 
+    static async findByIDNUMBER(req, res){
+        const { IDNUMBER } = req.params
+        const include = [
+            {
+                model: db.Partner,
+                as:'spouse'
+            }
+        ]
+
+        const response = await db.People.findOne({ 
+            where: { IDNumber: IDNUMBER },
+            include
+        })
+
+        if(!response){
+            return res.status(404).json({
+                message: 'No such person of this ID NUMBER found!'
+            }) 
+        }
+        return res.status(200).json({
+            response
+        })
+    }
 }
